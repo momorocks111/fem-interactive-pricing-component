@@ -75,7 +75,7 @@ function updateAmount() {
   }
 
   if (toggleBtn.checked) {
-    amountPerMonth *= 0.75;
+    amountPerMonth *= 9;
   }
 
   updateAmountDisplay(amountPerMonth, amountMobile);
@@ -90,7 +90,13 @@ function updateAmount() {
 function updateAmountDisplay(amount, amountElement) {
   const monthText = document.createElement("span");
   monthText.classList.add("month-text");
-  monthText.textContent = "/month";
+
+  if (toggleBtn.checked) {
+    monthText.textContent = "/year";
+  } else {
+    monthText.textContent = "/month";
+  }
+
   amountElement.textContent = `$${amount}.00`;
   amountElement.appendChild(monthText);
 }
